@@ -22,8 +22,8 @@ if (mongoURI) {
 }
 
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY || 'test_key',
-  key_secret: process.env.RAZORPAY_SECRET || 'test_secret'
+  key_id: process.env.RAZORPAY_KEY || 'rzp_test_RzsRnx4Bs0ckqu',
+  key_secret: process.env.RAZORPAY_SECRET || 'f80IKpqRxNtqpD2YKc7Ed4bE'
 });
 
 const userSchema = new mongoose.Schema({
