@@ -127,11 +127,12 @@
                     <div class="form-group">
                         <label for="amount">Funding Amount (₹)</label>
                         <select id="amount" name="amount" required>
-                            <option value="">Select amount</option>
+                            <option value="200">₹200</option>
+                            <option value="500">₹500</option>
+                            <option value="1000">₹1,000</option>
+                            <option value="2000">₹2,000</option>
+                            <option value="5000">₹5,000</option>
                             <option value="10000">₹10,000</option>
-                            <option value="25000">₹25,000</option>
-                            <option value="50000">₹50,000</option>
-                            <option value="100000">₹1,00,000</option>
                         </select>
                     </div>
                     <button type="submit" class="btn">Register & Pay Now</button>
@@ -224,8 +225,8 @@
             <div class="footer-section">
                 <h4>Support</h4>
                 <a onclick="showPage('contact')">Contact Us</a>
-                <a href="#">Email: support@instafund.com</a>
-                <a href="#">Phone: +91-9876-543210</a>
+                <a href="#">Email: instafundconsol@gmail.com</a>
+                <a href="#">Phone: +91 73493-46576</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -285,7 +286,7 @@
 
         function openRazorpayCheckout(order, email) {
             const options = {
-                key: 'YOUR_RAZORPAY_KEY',
+                key: 'rzp_test_RzsRnx4Bs0ckqu',
                 amount: order.amount,
                 currency: 'INR',
                 order_id: order.id,
