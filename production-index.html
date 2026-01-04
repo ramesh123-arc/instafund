@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instafund - Funded Trading Platform</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background: #f5f5f5; color: #333; }
+        nav { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-size: 24px; font-weight: bold; }
+        .nav-links { display: flex; gap: 20px; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; cursor: pointer; font-size: 14px; }
+        .nav-links a:hover { opacity: 0.8; }
+        .page { display: none; }
+        .page.active { display: block; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 20px; text-align: center; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; }
+        .hero p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
+        .cta-button { background: white; color: #667eea; padding: 15px 40px; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+        .cta-button:hover { transform: scale(1.05); }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .feature-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; }
+        .feature-card h3 { color: #667eea; margin-bottom: 15px; }
+        .container { width: 100%; max-width: 500px; background: white; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); overflow: hidden; margin: 30px auto; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px 20px; text-align: center; }
+        .header h1 { font-size: 32px; margin-bottom: 10px; }
+        .content { padding: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #333; font-weight: bold; font-size: 14px; }
+        input, select { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 5px; font-size: 14px; transition: border-color 0.3s; }
+        input:focus, select:focus { outline: none; border-color: #667eea; }
+        .btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .info-box { background: #f0f0f0; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-size: 14px; color: #555; border-left: 4px solid #667eea; }
+        .success-message { background: #4caf50; color: white; padding: 12px; border-radius: 5px; margin-bottom: 20px; display: none; }
+        .error-message { background: #f44336; color: white; padding: 12px; border-radius: 5px; margin-bottom: 20px; display: none; }
+        .static-page { max-width: 900px; margin: 0 auto; padding: 40px 20px; background: white; min-height: calc(100vh - 80px); }
+        .static-page h2 { color: #667eea; margin-bottom: 20px; font-size: 32px; }
+        .static-page h3 { color: #764ba2; margin-top: 30px; margin-bottom: 15px; }
+        .static-page p { line-height: 1.8; margin-bottom: 15px; color: #555; }
+        .static-page ul { margin-left: 20px; margin-bottom: 15px; }
+        .static-page li { margin-bottom: 10px; line-height: 1.8; color: #555; }
+        footer { background: #333; color: white; padding: 40px 20px; margin-top: 50px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .footer-section h4 { color: #667eea; margin-bottom: 15px; }
+        .footer-section a { color: #ccc; text-decoration: none; cursor: pointer; display: block; margin-bottom: 10px; }
+        .footer-section a:hover { color: #667eea; }
+        .footer-bottom { text-align: center; margin-top: 30px; padding-top: 30px; border-top: 1px solid #555; color: #999; }
+        @media (max-width: 600px) {
+            .nav-links { flex-direction: column; gap: 10px; font-size: 12px; }
+            .hero h1 { font-size: 32px; }
+            .container { border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">💰 Instafund</div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home')">Home</a></li>
+            <li><a onclick="showPage('register')">Register</a></li>
+            <li><a onclick="showPage('about')">About Us</a></li>
+            <li><a onclick="showPage('terms')">Terms</a></li>
+            <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>💰 Instafund</h1>
+            <p>Funded Trading Platform for Indians</p>
+            <p>Start trading with our capital and earn profits!</p>
+            <button class="cta-button" onclick="showPage('register')">Register Now</button>
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <h3>💼 Funded Accounts</h3>
+                <p>Get funded up to ₹1,00,000 to trade with our capital</p>
+            </div>
+            <div class="feature-card">
+                <h3>📈 Real-Time Trading</h3>
+                <p>Trade stocks, futures, and cryptocurrencies in real-time</p>
+            </div>
+            <div class="feature-card">
+                <h3>💰 Profit Sharing</h3>
+                <p>Keep 80% of profits you make, we take 20%</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔒 Secure Platform</h3>
+                <p>Bank-level security for your money and data</p>
+            </div>
+            <div class="feature-card">
+                <h3>📱 Mobile Trading</h3>
+                <p>Trade on-the-go with our mobile app</p>
+            </div>
+            <div class="feature-card">
+                <h3>👨‍💼 Expert Support</h3>
+                <p>24/7 customer support team to help you</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="register" class="page">
+        <div class="container">
+            <div class="header">
+                <h1>💰 Join Instafund</h1>
+                <p>Start your funded trading journey today</p>
+            </div>
+            <div class="content">
+                <div class="success-message" id="successMessage"></div>
+                <div class="error-message" id="errorMessage"></div>
+                <div class="info-box">ℹ️ Register to get funded trading account worth ₹10K-₹1L</div>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="10-digit phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Funding Amount (₹)</label>
+                        <select id="amount" name="amount" required>
+                            <option value="">Select amount</option>
+                            <option value="10000">₹10,000</option>
+                            <option value="25000">₹25,000</option>
+                            <option value="50000">₹50,000</option>
+                            <option value="100000">₹1,00,000</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Register & Pay Now</button>
+                </form>
+                <p style="margin-top: 20px; font-size: 12px; color: #999; text-align: center;">
+                    By registering, you agree to our <a href="#" onclick="showPage('terms')" style="color: #667eea;">Terms & Conditions</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="page">
+        <div class="static-page">
+            <h2>About Instafund</h2>
+            <h3>Our Mission</h3>
+            <p>At Instafund, our mission is to democratize funded trading in India. We believe every talented trader deserves access to capital to grow their trading business.</p>
+            <h3>What We Do</h3>
+            <p>Instafund is a leading funded trading platform that offers traders the capital they need to trade profitably. We connect skilled traders with institutional capital.</p>
+            <h3>Why Choose Instafund?</h3>
+            <ul>
+                <li><strong>No Personal Risk:</strong> Trade with our capital, not your own money</li>
+                <li><strong>Profit Sharing:</strong> Keep 80% of your profits</li>
+                <li><strong>Low Fees:</strong> No hidden charges or commissions</li>
+                <li><strong>24/7 Support:</strong> Our team is always here to help</li>
+                <li><strong>Secure Platform:</strong> Bank-level security for your funds</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="terms" class="page">
+        <div class="static-page">
+            <h2>Terms & Conditions</h2>
+            <h3>1. Acceptance of Terms</h3>
+            <p>By registering with Instafund, you agree to be bound by these Terms & Conditions.</p>
+            <h3>2. Eligibility</h3>
+            <p>To use Instafund, you must:</p>
+            <ul>
+                <li>Be at least 18 years old</li>
+                <li>Be a resident of India</li>
+                <li>Provide accurate and complete information during registration</li>
+                <li>Have a valid bank account and Aadhaar card</li>
+            </ul>
+            <h3>3. Funding and Trading</h3>
+            <ul>
+                <li>Funding amounts range from ₹10,000 to ₹1,00,000</li>
+                <li>You must complete our trading challenge to get approved for funding</li>
+                <li>Profits are shared: You keep 80%, we take 20%</li>
+                <li>Losses are your responsibility if they exceed 5% of the funding amount</li>
+            </ul>
+            <h3>4. Risk Disclosure</h3>
+            <p>Trading involves substantial risk of loss. You should only trade if you can afford to lose the funding amount.</p>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <div class="static-page">
+            <h2>Contact Us</h2>
+            <h3>Get In Touch</h3>
+            <p>Have questions about Instafund? We're here to help!</p>
+            <h3>📧 Email</h3>
+            <p><strong>support@instafund.com</strong><br>Response time: 2-4 hours</p>
+            <h3>📱 WhatsApp</h3>
+            <p><strong>+91 9876543210</strong><br>Available: 9 AM - 10 PM IST</p>
+            <h3>☎️ Phone</h3>
+            <p><strong>+91-9876-543210</strong><br>Available: 10 AM - 6 PM IST (Mon-Fri)</p>
+            <h3>📍 Address</h3>
+            <p>Instafund<br>Finance District<br>Bangalore, Karnataka 560001<br>India</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Instafund</h4>
+                <p>Leading funded trading platform in India. Start trading with our capital today!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('about')">About Us</a>
+                <a onclick="showPage('register')">Register</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a onclick="showPage('terms')">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Disclaimer</a>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <a onclick="showPage('contact')">Contact Us</a>
+                <a href="#">Email: support@instafund.com</a>
+                <a href="#">Phone: +91-9876-543210</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Instafund. All rights reserved. | Built with ❤️ for Indian traders</p>
+            <p style="margin-top: 10px; font-size: 12px;">⚠️ Risk Disclosure: Trading involves substantial risk. Only trade if you can afford to lose the funded amount.</p>
+        </div>
+    </footer>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        const API_URL = '/api';
+
+        document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const amount = parseInt(document.getElementById('amount').value);
+
+            try {
+                const userResponse = await fetch(`${API_URL}/users`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, phone, amount })
+                });
+
+                const userData = await userResponse.json();
+
+                if (!userData.success) {
+                    showError('Error creating user. Try again.');
+                    return;
+                }
+
+                const orderResponse = await fetch(`${API_URL}/create-order`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount, email })
+                });
+
+                const order = await orderResponse.json();
+
+                openRazorpayCheckout(order, email);
+
+            } catch (error) {
+                showError('Error: ' + error.message);
+            }
+        });
+
+        function openRazorpayCheckout(order, email) {
+            const options = {
+                key: 'YOUR_RAZORPAY_KEY',
+                amount: order.amount,
+                currency: 'INR',
+                order_id: order.id,
+                name: 'Instafund',
+                description: 'Funded Trading Account',
+                handler: async function (response) {
+                    try {
+                        await fetch(`${API_URL}/verify-payment`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                orderId: order.id,
+                                paymentId: response.razorpay_payment_id,
+                                email: email
+                            })
+                        });
+
+                        showSuccess('Payment successful! Your account is now active! 🎉');
+                        document.getElementById('registrationForm').reset();
+                        setTimeout(() => showPage('home'), 2000);
+                    } catch (error) {
+                        showError('Payment verification failed');
+                    }
+                }
+            };
+
+            const rzp = new Razorpay(options);
+            rzp.open();
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
